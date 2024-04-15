@@ -2,6 +2,8 @@
 
 Welcome to the repository hosting the scripts and data used to build the MosViR pipeline. These resources are related to the paper titled "Predicting novel mosquito-associated viruses from metatranscriptomic dark matter" (In press).
 
+![](https://github.com/aandradebio/MosViR_SB/blob/main/GraphicalAbstract1.jpg)
+
 To uphold transparency and facilitate reproducibility, all data generated and scripts used in this study are accessible here. 
 Please explore and use the resources provided to reproduce our methods. 
 
