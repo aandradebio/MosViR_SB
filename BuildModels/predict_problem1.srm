@@ -1,0 +1,69 @@
+#!/usr/bin/bash
+#SBATCH --nodes=1                #Número de Nós
+#SBATCH --ntasks-per-node=5   #Número de tarefas por Nó
+#SBATCH --ntasks=5              #Numero total de tarefas MPI
+#SBATCH --cpus-per-task=10
+#SBATCH -p labinfo                  #Fila (partition) a ser utilizada
+#SBATCH -J predict #Nome job
+###SBATCH --time=00:00:30          #Obrigatório
+
+#Exibe os nós alocados para o Job e acessa o diretorio em que o script foi submetido
+echo $SLURM_JOB_NODELIST
+cd  $SLURM_SUBMIT_DIR
+
+## 1) Carrega o módulo
+module load R/4.3.0_bio
+
+arbo_path="/labinfo/home/aandrade/data/datasets/featureMatrices/arboviruses/"
+mos_path="/labinfo/home/aandrade/data/datasets/featureMatrices/mosquito/"
+other_path="/labinfo/home/aandrade/data/datasets/featureMatrices/otherviruses/"
+models_path="/labinfo/home/aandrade/data/datasets/firstrun/models/"
+
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_3000bp_12_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_3000bp_12_test.csv.gz" "${other_path}featureMatrix_otherviruses_3000bp_12_filtered_test.csv.gz" "${models_path}class1_3000bp_12" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_3000bp_22_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_3000bp_22_test.csv.gz" "${other_path}featureMatrix_otherviruses_3000bp_22_filtered_test.csv.gz" "${models_path}class1_3000bp_22" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_3000bp_13_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_3000bp_13_test.csv.gz" "${other_path}featureMatrix_otherviruses_3000bp_13_filtered_test.csv.gz" "${models_path}class1_3000bp_13" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_3000bp_21_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_3000bp_21_test.csv.gz" "${other_path}featureMatrix_otherviruses_3000bp_21_filtered_test.csv.gz" "${models_path}class1_3000bp_21" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_3000bp_31_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_3000bp_31_test.csv.gz" "${other_path}featureMatrix_otherviruses_3000bp_31_filtered_test.csv.gz" "${models_path}class1_3000bp_31" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_3000bp_20_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_3000bp_20_test.csv.gz" "${other_path}featureMatrix_otherviruses_3000bp_20_filtered_test.csv.gz" "${models_path}class1_3000bp_20" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_3000bp_30_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_3000bp_30_test.csv.gz" "${other_path}featureMatrix_otherviruses_3000bp_30_filtered_test.csv.gz" "${models_path}class1_3000bp_30" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_3000bp_40_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_3000bp_40_test.csv.gz" "${other_path}featureMatrix_otherviruses_3000bp_40_filtered_test.csv.gz" "${models_path}class1_3000bp_40" &
+
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_10000bp_12_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_10000bp_12_test.csv.gz" "${other_path}featureMatrix_otherviruses_10000bp_12_filtered_test.csv.gz" "${models_path}class1_10000bp_12" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_10000bp_22_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_10000bp_22_test.csv.gz" "${other_path}featureMatrix_otherviruses_10000bp_22_filtered_test.csv.gz" "${models_path}class1_10000bp_22" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_10000bp_13_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_10000bp_13_test.csv.gz" "${other_path}featureMatrix_otherviruses_10000bp_13_filtered_test.csv.gz" "${models_path}class1_10000bp_13" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_10000bp_21_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_10000bp_21_test.csv.gz" "${other_path}featureMatrix_otherviruses_10000bp_21_filtered_test.csv.gz" "${models_path}class1_10000bp_21" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_10000bp_31_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_10000bp_31_test.csv.gz" "${other_path}featureMatrix_otherviruses_10000bp_31_filtered_test.csv.gz" "${models_path}class1_10000bp_31" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_10000bp_20_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_10000bp_20_test.csv.gz" "${other_path}featureMatrix_otherviruses_10000bp_20_filtered_test.csv.gz" "${models_path}class1_10000bp_20" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_10000bp_30_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_10000bp_30_test.csv.gz" "${other_path}featureMatrix_otherviruses_10000bp_30_filtered_test.csv.gz" "${models_path}class1_10000bp_30" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_10000bp_40_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_10000bp_40_test.csv.gz" "${other_path}featureMatrix_otherviruses_10000bp_40_filtered_test.csv.gz" "${models_path}class1_10000bp_40" &
+
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_1000bp_12_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_1000bp_12_test.csv.gz" "${other_path}featureMatrix_otherviruses_1000bp_12_filtered_test.csv.gz" "${models_path}class1_1000bp_12" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_1000bp_22_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_1000bp_22_test.csv.gz" "${other_path}featureMatrix_otherviruses_1000bp_22_filtered_test.csv.gz" "${models_path}class1_1000bp_22" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_1000bp_13_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_1000bp_13_test.csv.gz" "${other_path}featureMatrix_otherviruses_1000bp_13_filtered_test.csv.gz" "${models_path}class1_1000bp_13" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_1000bp_21_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_1000bp_21_test.csv.gz" "${other_path}featureMatrix_otherviruses_1000bp_21_filtered_test.csv.gz" "${models_path}class1_1000bp_21" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_1000bp_31_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_1000bp_31_test.csv.gz" "${other_path}featureMatrix_otherviruses_1000bp_31_filtered_test.csv.gz" "${models_path}class1_1000bp_31" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_1000bp_20_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_1000bp_20_test.csv.gz" "${other_path}featureMatrix_otherviruses_1000bp_20_filtered_test.csv.gz" "${models_path}class1_1000bp_20" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_1000bp_30_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_1000bp_30_test.csv.gz" "${other_path}featureMatrix_otherviruses_1000bp_30_filtered_test.csv.gz" "${models_path}class1_1000bp_30" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_1000bp_40_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_1000bp_40_test.csv.gz" "${other_path}featureMatrix_otherviruses_1000bp_40_filtered_test.csv.gz" "${models_path}class1_1000bp_40" &
+
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_500bp_12_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_500bp_12_test.csv.gz" "${other_path}featureMatrix_otherviruses_500bp_12_filtered_test.csv.gz" "${models_path}class1_500bp_12" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_500bp_22_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_500bp_22_test.csv.gz" "${other_path}featureMatrix_otherviruses_500bp_22_filtered_test.csv.gz" "${models_path}class1_500bp_22" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_500bp_13_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_500bp_13_test.csv.gz" "${other_path}featureMatrix_otherviruses_500bp_13_filtered_test.csv.gz" "${models_path}class1_500bp_13" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_500bp_21_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_500bp_21_test.csv.gz" "${other_path}featureMatrix_otherviruses_500bp_21_filtered_test.csv.gz" "${models_path}class1_500bp_21" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_500bp_31_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_500bp_31_test.csv.gz" "${other_path}featureMatrix_otherviruses_500bp_31_filtered_test.csv.gz" "${models_path}class1_500bp_31" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_500bp_20_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_500bp_20_test.csv.gz" "${other_path}featureMatrix_otherviruses_500bp_20_filtered_test.csv.gz" "${models_path}class1_500bp_20" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_500bp_30_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_500bp_30_test.csv.gz" "${other_path}featureMatrix_otherviruses_500bp_30_filtered_test.csv.gz" "${models_path}class1_500bp_30" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_500bp_40_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_500bp_40_test.csv.gz" "${other_path}featureMatrix_otherviruses_500bp_40_filtered_test.csv.gz" "${models_path}class1_500bp_40" &
+
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_5000bp_12_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_5000bp_12_test.csv.gz" "${other_path}featureMatrix_otherviruses_5000bp_12_filtered_test.csv.gz" "${models_path}class1_5000bp_12" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_5000bp_22_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_5000bp_22_test.csv.gz" "${other_path}featureMatrix_otherviruses_5000bp_22_filtered_test.csv.gz" "${models_path}class1_5000bp_22" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_5000bp_13_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_5000bp_13_test.csv.gz" "${other_path}featureMatrix_otherviruses_5000bp_13_filtered_test.csv.gz" "${models_path}class1_5000bp_13" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_5000bp_21_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_5000bp_21_test.csv.gz" "${other_path}featureMatrix_otherviruses_5000bp_21_filtered_test.csv.gz" "${models_path}class1_5000bp_21" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_5000bp_31_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_5000bp_31_test.csv.gz" "${other_path}featureMatrix_otherviruses_5000bp_31_filtered_test.csv.gz" "${models_path}class1_5000bp_31" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_5000bp_20_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_5000bp_20_test.csv.gz" "${other_path}featureMatrix_otherviruses_5000bp_20_filtered_test.csv.gz" "${models_path}class1_5000bp_20" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_5000bp_30_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_5000bp_30_test.csv.gz" "${other_path}featureMatrix_otherviruses_5000bp_30_filtered_test.csv.gz" "${models_path}class1_5000bp_30" &
+Rscript predict_problem1.R "${arbo_path}featureMatrix_arboviruses_5000bp_40_filtered_test.csv.gz" "${mos_path}featureMatrix_mosquito_subset_5000bp_40_test.csv.gz" "${other_path}featureMatrix_otherviruses_5000bp_40_filtered_test.csv.gz" "${models_path}class1_5000bp_40" &
+
+
+
+wait
