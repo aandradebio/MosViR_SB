@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+#SBATCH --nodes=1                #Número de Nós
+#SBATCH --ntasks-per-node=1    #Número de tarefas por Nó
+#SBATCH --ntasks=1               #Numero total de tarefas MPI
+#SBATCH --cpus-per-task=50  
+#SBATCH -p labinfo                  #Fila (partition) a ser utilizada
+#SBATCH -J bbmap
+
+#Exibe os nós alocados para o Job e acessa o diretorio em que o script foi submetido
+echo $SLURM_JOB_NODELIST
+cd  $SLURM_SUBMIT_DIR
+
+## 1) Carrega o módulo
+module load bbmap/39.01
+module load cdhit
+module load checkv/1.0.1
+module load R/4.3.0_bio
+module load prodigal-gv/2.11
+module load prodigal/2.6.3
+module load hmmer/3.3.2
+
+#filterbyname.sh in=otherviruses.fasta out=otherviruses_filt.fasta names=remove_other.txt include=f
+#ilterbyname.sh in=mosquito.fasta out=mosquito_filt.fasta names=remove.txt include=f
+#filterbyname.sh in=arboviruses.fasta out=arboviruses_filt.fasta names=remove_arbo.txt include=f
+Rscript filter.R

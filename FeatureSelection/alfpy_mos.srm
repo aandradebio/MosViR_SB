@@ -1,0 +1,33 @@
+#!/usr/bin/bash
+#SBATCH --nodes=1                #Número de Nós
+#SBATCH --ntasks-per-node=1 #Número de tarefas por Nó
+#SBATCH --ntasks=1              #Numero total de tarefas MPI
+#SBATCH --cpus-per-task=20
+#SBATCH -p labinfo                  #Fila (partition) a ser utilizada
+#SBATCH -J alfpy_mos  #Nome job
+###SBATCH --time=00:00:30          #Obrigatório
+
+#Exibe os nós alocados para o Job e acessa o diretorio em que o script foi submetido
+echo $SLURM_JOB_NODELIST
+cd  $SLURM_SUBMIT_DIR
+
+## 1) Carrega o módulo
+module load python3/3.10.10_geral
+module load python2/2.7.18
+module load python3
+module load R/
+
+Rscript resamplings.R /labinfo/home/aandrade/datasets/mosquito_subset_1000bp.fasta mos_1000bp 100 1500
+./alfpy.sh mos_1000bp 
+
+Rscript resamplings.R /labinfo/home/aandrade/datasets/mosquito_subset_10000bp.fasta mos_10000bp 100 1500
+./alfpy.sh mos_10000bp
+
+Rscript resamplings.R /labinfo/home/aandrade/datasets/mosquito_subset_300bp.fasta mos_3000bp 100 1500
+./alfpy.sh mos_3000bp
+
+Rscript resamplings.R /labinfo/home/aandrade/datasets/mosquito_subset_5000bp.fasta mos_5000bp 100 1500
+./alfpy.sh mos_5000bp
+
+Rscript resamplings.R /labinfo/home/aandrade/datasets/mosquito_subset_500bp.fasta mos_500bp 100 1500
+./alfpy.sh mos_500bp
