@@ -60,7 +60,7 @@ n_sample <- 500  # Number of samples to select from class 2
 n_sample2 <- 2 * n_sample
 
 # Loop through iterations
-for (i in 1:100){
+for (i in 1:50){
 
     # Sample from each class and assign class labels
     class1.subset <- sample_n(class1_train, n_sample)
