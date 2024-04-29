@@ -2,6 +2,8 @@
 
 A crucial step in testing the MosViR pipeline involved retrieving real-world data from mosquito metatranscriptomics. Figure 1 presents a comprehensive diagram describing the analysis conducted to prepare the metatranscriptomic data for classification by the MosViR pipeline. 
 
+![](https://github.com/aandradebio/MosViR_SB/blob/main/03_MetatranscriptomicData/SupplementaryFig1.png)
+
 **Figure 1**. A step-by-step diagram of the comprehensive similarity-based methodology employed for preparing previously published metatranscriptomic data to test the MosViR pipeline. 
 
 
