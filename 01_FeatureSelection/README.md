@@ -2,7 +2,7 @@
 
 The FASTA files with the sequences used for training and testing our predictive models can be found on Zenodo (https://zenodo.org/records/10950999). These files cover fragment lengths of 500 bp, 1000 bp, 3000 bp, 5000 bp, and 10000 bp for Other viruses, Mosquito-associated viruses, and Arboviruses (https://zenodo.org/records/10975789). Additionally, we have hosted the complete feature matrices in the Zenodo repository (https://zenodo.org/records/10975801).
 
-We used five alignment-free feature extraction methods from the FASTA files: 1) K-mers, 2) (m,n)-mers, 3) Frequency Chaos Game Representation, 4) Feature Frequency Profiles, and 5) Composition vector. More details on this analysis can be found in the manuscript and in the Supplementary Material.
+We used five alignment-free feature extraction methods from the FASTA files: 1) K-mers, 2) (m,n)-mers, 3) Frequency Chaos Game Representation, 4) Feature Frequency Profiles, and 5) Composition vector. More details on this analysis can be found in the manuscript and the Supplementary Material.
 
 1. **Extract K-mers and (m,n)-mers using the mnmer R package**
 
@@ -47,11 +47,11 @@ The `run_mnmer.sh` script serves as a wrapper to execute the `mnmer.R` script wi
 
 3. After obtaining the feature matrices, we used the caret package in R to subset it into train and testing sets with the `subsetMatrices.R` script. 
 
-```cd /labinfo/home/aandrade/data/datasets/featureMatrices/mosquito
+```cd featureMatrices/mosquito
 	while read line; do Rscript ../subsetMatrices.R "${line}.csv.gz" ${line};  done < samples.tab &
-	cd /labinfo/home/aandrade/data/datasets/featureMatrices/arboviruses
+	cd featureMatrices/arboviruses
 	while read line; do Rscript ../subsetMatrices.R "${line}.csv.gz" ${line} ; done < samples.tab &
-	cd /labinfo/home/aandrade/data/datasets/featureMatrices/otherviruses
+	cd featureMatrices/otherviruses
 	while read line; do Rscript ../subsetMatrices.R "${line}.csv.gz" ${line} ; done < samples.tab &
 	wait
 ```
