@@ -1,0 +1,23 @@
+## Get taxonomy information for representative sequences
+
+1. **Prepare Accession Numbers:** Ensure you have a file named `accession_numbers.txt` containing the list of accession numbers you want to process.
+
+2. **Generate Script:** Run the following command in your terminal to generate the script to retrieve taxonomic information for each accession number:
+   
+   ```bash
+   while read line; do echo "./getTax.sh ${line}" >> run.sh; done < accession_numbers.txt
+
+3. **Set Permissions and run**
+   ```bash
+   chmod 777 *sh
+   ./run.sh
+
+This script automates the retrieval of taxonomic information for the provided accession numbers. It calls the getTax.sh script for each accession number, passing it as an argument. The getTax.sh script utilizes the Entrez Direct utilities (esearch and efetch) to fetch taxonomic information from NCBI databases.
+The getTax.sh script generates a CSV file named taxonomic_info2.csv, which contains the following information for each accession number:
+
+    Accession number
+    Taxonomic ID (Taxid)
+    Lineage
+    Scientific Name
+
+The taxonomy information was used to annotate the Itool Trees. 
